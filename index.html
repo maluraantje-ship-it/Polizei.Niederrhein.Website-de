@@ -10,82 +10,168 @@
             --primary-dark: #0044cc;
             --glow: rgba(0, 102, 255, 0.45);
             --text: #f0f4ff;
-            --bg-overlay: rgba(5, 15, 45, 0.80);
+            --bg-start: #0a1f4a;
+            --bg-end: #001f3f;
             --error: #ff6b6b;
             --success: #aaff77;
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(to bottom, #0a1f4a, #001133),
-                        url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat fixed;
-            background-blend-mode: overlay;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2.5rem 1rem;
+            justify-content: flex-start;
+            padding: 5rem 1rem 3rem;
+            line-height: 1.6;
         }
 
-        .nav { position:fixed; top:1.5rem; left:1.5rem; z-index:1000; display:flex; gap:1rem; }
-        .nav button {
-            background:rgba(255,255,255,0.12); backdrop-filter:blur(12px);
-            border:1px solid rgba(255,255,255,0.18); color:white;
-            padding:0.8rem 1.5rem; border-radius:999px; font-size:1.05rem;
-            cursor:pointer; transition:all 0.3s ease;
+        .nav {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 1.2rem;
         }
-        .nav button:hover { background:rgba(255,255,255,0.25); transform:translateY(-3px); }
+
+        .nav button {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: white;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+        }
 
         .container {
-            background:var(--bg-overlay); backdrop-filter:blur(14px);
-            border-radius:1.6rem; padding:2.8rem 2.2rem; width:100%; max-width:960px;
-            margin:2rem 0; border:1px solid rgba(255,255,255,0.09);
-            box-shadow:0 20px 50px rgba(0,0,0,0.55);
+            background: rgba(10, 25, 60, 0.78);
+            backdrop-filter: blur(14px);
+            border-radius: 1.4rem;
+            padding: 2.8rem 2.4rem;
+            width: 100%;
+            max-width: 920px;
+            margin: 1.8rem 0;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+            text-align: center;
         }
 
         h1 {
-            font-size:3.2rem; font-weight:700; margin-bottom:2rem;
-            background:linear-gradient(90deg, #a0c4ff, #e0eaff);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-            text-align:center;
+            font-size: 3.3rem;
+            font-weight: 700;
+            margin-bottom: 2.2rem;
+            background: linear-gradient(90deg, #a0c4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,80,200,0.4);
         }
 
         .main-btn {
-            font-size:1.4rem; font-weight:600; padding:1.1rem 2.8rem; margin:1rem;
-            background:linear-gradient(145deg, var(--primary), var(--primary-dark));
-            color:white; border:none; border-radius:999px; cursor:pointer;
-            transition:all 0.35s ease; box-shadow:0 8px 25px rgba(0,80,200,0.35);
+            font-size: 1.45rem;
+            font-weight: 600;
+            padding: 1.15rem 3rem;
+            margin: 1rem 0.8rem;
+            background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 25px rgba(0,80,200,0.4);
         }
-        .main-btn:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,80,200,0.55); }
 
-        .main-btn:disabled { background:#444 !important; transform:none !important; opacity:0.6; cursor:not-allowed; }
+        .main-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,80,200,0.6);
+        }
 
-        .secondary-btn { background:linear-gradient(145deg,#555,#333); }
+        .main-btn:disabled {
+            background: #444 !important;
+            transform: none !important;
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .secondary-btn {
+            background: linear-gradient(145deg, #555, #333);
+        }
 
         input, textarea {
-            width:100%; max-width:680px; margin:0.9rem auto; padding:1rem 1.4rem;
-            font-size:1.15rem; border:1px solid rgba(255,255,255,0.2); border-radius:1rem;
-            background:rgba(255,255,255,0.08); color:white; transition:all 0.3s;
+            width: 100%;
+            max-width: 680px;
+            margin: 1rem auto;
+            padding: 1.1rem 1.5rem;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 1rem;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            transition: all 0.3s;
+            display: block;
         }
-        input:focus, textarea:focus { border-color:var(--primary); box-shadow:0 0 0 4px rgba(0,102,255,0.25); background:rgba(255,255,255,0.12); }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,102,255,0.3);
+            background: rgba(255,255,255,0.14);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
 
         .list-item {
-            background:rgba(255,255,255,0.08); border-radius:1rem; padding:1.4rem; margin:1.2rem 0;
-            border:1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.3rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
         }
 
-        .top-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem; }
+        .top-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
 
-        .error { color:var(--error); font-size:1.25rem; margin:1rem 0; }
+        .error {
+            color: var(--error);
+            font-size: 1.25rem;
+            margin: 1rem 0;
+        }
 
-        .hidden { display:none !important; }
+        .hidden {
+            display: none !important;
+        }
 
-        @media (max-width:680px) {
-            h1 { font-size:2.5rem; }
-            .main-btn { padding:1rem 2.2rem; font-size:1.25rem; }
+        @media (max-width: 680px) {
+            h1 { font-size: 2.6rem; }
+            .main-btn { padding: 1rem 2.4rem; font-size: 1.3rem; margin: 0.8rem 0.5rem; }
+            .container { padding: 2.2rem 1.6rem; }
         }
     </style>
 </head>
@@ -121,11 +207,8 @@
         <h1>Bewerbungen verwalten</h1>
 
         <div class="top-controls">
-            <div>
-                <button class="main-btn" onclick="toggleApplicationsOpen(true)" id="btn-open">Bewerbungen öffnen</button>
-                <button class="main-btn" onclick="toggleApplicationsOpen(false)" id="btn-close">Bewerbungen schließen</button>
-            </div>
-            <button class="main-btn secondary-btn" onclick="backToBeamten()">Zurück</button>
+            <button class="main-btn" onclick="toggleApplicationsOpen(true)" id="btn-open">Bewerbungen öffnen</button>
+            <button class="main-btn" onclick="toggleApplicationsOpen(false)" id="btn-close">Bewerbungen schließen</button>
         </div>
 
         <div id="manage-code-section">
@@ -206,11 +289,11 @@
 
     <script>
         // ────────────────────────────────────────────────
-        // CODES – nur hier sichtbar (nicht im HTML-Text)
+        // CODES – nur hier sichtbar
         // ────────────────────────────────────────────────
-        const BEAMTEN_PW       = '1224';
-        const MANAGE_CODE      = '12299';
-        const AKTEN_PW         = '333563';
+        const BEAMTEN_PW    = '1224';
+        const MANAGE_CODE   = '12299';
+        const AKTEN_PW      = '333563';
 
         // localStorage Initialisierung
         if (!localStorage.getItem('applications')) localStorage.setItem('applications', JSON.stringify([]));
@@ -286,7 +369,7 @@
                     <p><strong>Zeiten:</strong> ${app.onlinezeiten}</p>
                     <p><strong>RP:</strong> ${app.rp}</p>
                     <p><strong>Status:</strong> <span style="font-weight:bold">${app.status}</span></p>
-                    <div style="margin-top:1.2rem;">
+                    <div style="margin-top:1.2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
                         <button class="main-btn" style="padding:0.8rem 1.5rem; font-size:1.1rem;" onclick="changeStatus(${i}, 'Angenommen')">Annehmen</button>
                         <button class="main-btn" style="padding:0.8rem 1.5rem; font-size:1.1rem; background:linear-gradient(145deg,#dc3545,#a71d2a);" onclick="changeStatus(${i}, 'Abgelehnt')">Ablehnen</button>
                         <button class="main-btn" style="padding:0.8rem 1.5rem; font-size:1.1rem; background:linear-gradient(145deg,#6c757d,#495057);" onclick="deleteApplication(${i})">Löschen</button>
@@ -310,10 +393,6 @@
             localStorage.setItem('applications', JSON.stringify(apps));
             loadApplicationsManage();
         }
-
-        // ────────────────────────────────────────────────
-        // Aktensystem (mit Suche – wie zuvor)
-        // ────────────────────────────────────────────────
 
         function showAktenLogin() { showSection('akten-login'); }
         function loginAkten() {
@@ -394,10 +473,6 @@
                 list.appendChild(p);
             });
         }
-
-        // ────────────────────────────────────────────────
-        // Karriere & Bewerbung
-        // ────────────────────────────────────────────────
 
         function showKarriere() { showSection('karriere'); updateBewerbungButton(); }
 
