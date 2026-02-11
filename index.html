@@ -3,84 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polizei Niederrhein - Karriere und Beamtenportal</title>
+    <title>Polizei Niederrhein – Karriere & Beamtenportal</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://cdn.suwalls.com/wallpapers/abstract/pink-blurry-nebula-in-the-blue-galaxy-52976-1920x1200.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0044cc;
+            --glow: rgba(0, 102, 255, 0.45);
+            --text: #f0f4ff;
+            --bg-overlay: rgba(5, 15, 45, 0.80);
+            --error: #ff6b6b;
+            --success: #aaff77;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(to bottom, #0a1f4a, #001133),
+                        url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat fixed;
+            background-blend-mode: overlay;
+            color: var(--text);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
+            padding: 2.5rem 1rem;
+            line-height: 1.5;
         }
-        .container {
-            max-width: 900px;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.65);
-            border-radius: 12px;
-            margin: 20px;
-        }
-        h1 {
-            font-size: 3.2em;
-            margin-bottom: 25px;
-        }
-        button {
-            font-size: 1.6em;
-            padding: 18px 40px;
-            margin: 12px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        button:hover {
-            background-color: #004080;
-            transform: translateY(-2px);
-        }
-        button:disabled {
-            background-color: #444;
-            cursor: not-allowed;
-        }
-        input, textarea {
-            width: 85%;
-            max-width: 600px;
-            margin: 12px 0;
-            padding: 14px;
-            font-size: 1.3em;
-            border-radius: 6px;
-            border: 1px solid #555;
-        }
+
         .nav {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
         }
+
         .nav button {
-            font-size: 1.1em;
-            padding: 10px 16px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .hidden { display: none; }
+
+        .nav button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .container {
+            background: var(--bg-overlay);
+            backdrop-filter: blur(14px);
+            border-radius: 1.6rem;
+            padding: 2.8rem 2.2rem;
+            width: 100%;
+            max-width: 960px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.09);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            margin-bottom: 2.2rem;
+            background: linear-gradient(90deg, #a0c4ff, #e0eaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 12px rgba(0,80,200,0.45);
+            text-align: center;
+        }
+
+        .main-btn {
+            font-size: 1.45rem;
+            font-weight: 600;
+            padding: 1.15rem 3rem;
+            margin: 1.1rem 1rem;
+            background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 10px 30px rgba(0, 80, 200, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 45px rgba(0, 80, 200, 0.6),
+                        0 0 35px var(--glow);
+        }
+
+        .main-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 80, 200, 0.45);
+        }
+
+        .main-btn:disabled {
+            background: linear-gradient(145deg, #555, #444) !important;
+            transform: none !important;
+            box-shadow: none !important;
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .secondary-btn {
+            background: linear-gradient(145deg, #555, #333);
+            font-size: 1.3rem;
+            padding: 1rem 2.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            max-width: 700px;
+            margin: 1rem auto;
+            padding: 1.1rem 1.5rem;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 1.2rem;
+            background: rgba(255,255,255,0.09);
+            color: white;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 5px rgba(0,102,255,0.3);
+            background: rgba(255,255,255,0.14);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
         .list-item {
-            background: rgba(255,255,255,0.15);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.09);
+            border-radius: 1.2rem;
+            padding: 1.6rem;
+            margin: 1.4rem 0;
+            border: 1px solid rgba(255,255,255,0.12);
             text-align: left;
         }
+
+        .list-item p {
+            margin: 0.6rem 0;
+        }
+
         #bewerbung-code, #status-result {
-            font-size: 1.8em;
-            color: #ffff99;
-            margin: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--success);
+            margin: 1.8rem 0;
+            padding: 1.2rem;
+            background: rgba(0,0,0,0.35);
+            border-radius: 1.2rem;
+            text-align: center;
+        }
+
+        .error {
+            color: var(--error);
+            font-size: 1.3rem;
+            margin: 1rem 0;
+        }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 680px) {
+            h1 { font-size: 2.6rem; }
+            .main-btn { padding: 1rem 2.4rem; font-size: 1.3rem; margin: 0.8rem 0.6rem; }
+            .container { padding: 2rem 1.6rem; }
         }
     </style>
 </head>
@@ -93,67 +200,60 @@
 
     <div class="container" id="main">
         <h1>Polizei Niederrhein</h1>
-        <button onclick="showBeamtenLogin()">Beamten Anmeldung</button>
-        <button onclick="showKarriere()">Karriere</button>
+        <button class="main-btn" onclick="showBeamtenLogin()">Beamten Anmeldung</button>
+        <button class="main-btn" onclick="showKarriere()">Karriere</button>
     </div>
 
-    <!-- Beamten-Login -->
     <div class="container hidden" id="beamten-login">
         <h1>Beamten Anmeldung</h1>
         <input type="password" id="beamten-pw" placeholder="Passwort eingeben">
-        <button onclick="loginBeamten()">Anmelden</button>
-        <p id="beamten-error" style="color: #ff6666; font-size: 1.2em;"></p>
-        <button onclick="backToMain()">Zurück</button>
+        <button class="main-btn" onclick="loginBeamten()">Anmelden</button>
+        <p id="beamten-error" class="error"></p>
+        <button class="main-btn secondary-btn" onclick="backToMain()">Zurück</button>
     </div>
 
-    <!-- Beamten-Panel -->
     <div class="container hidden" id="beamten-panel">
         <h1>Beamten Panel</h1>
         <div id="applications-list"></div>
-        <button onclick="showOpenClose()">Bewerbungen verwalten</button>
-        <button onclick="showAktenLogin()">Aktensystem</button>
-        <button onclick="logoutBeamten()">Ausloggen</button>
+        <button class="main-btn" onclick="showOpenClose()">Bewerbungen verwalten</button>
+        <button class="main-btn" onclick="showAktenLogin()">Aktensystem</button>
+        <button class="main-btn secondary-btn" onclick="logoutBeamten()">Ausloggen</button>
     </div>
 
-    <!-- Öffnen/Schließen (Code 1225 ungültig) -->
     <div class="container hidden" id="open-close">
         <h1>Bewerbungen verwalten</h1>
         <input type="password" id="open-close-code" placeholder="Code eingeben">
-        <button onclick="toggleApplications()">Ausführen</button>
-        <p id="open-close-error" style="color: #ff6666; font-size: 1.3em;"></p>
-        <button onclick="backToBeamten()">Zurück</button>
+        <button class="main-btn" onclick="toggleApplications()">Ausführen</button>
+        <p id="open-close-error" class="error"></p>
+        <button class="main-btn secondary-btn" onclick="backToBeamten()">Zurück</button>
     </div>
 
-    <!-- Aktensystem Login -->
     <div class="container hidden" id="akten-login">
-        <h1>Aktensystem</h1>
+        <h1>Aktensystem Anmeldung</h1>
         <input type="password" id="akten-pw" placeholder="Passwort eingeben">
-        <button onclick="loginAkten()">Anmelden</button>
-        <p id="akten-error" style="color: #ff6666; font-size: 1.2em;"></p>
-        <button onclick="backToBeamten()">Zurück</button>
+        <button class="main-btn" onclick="loginAkten()">Anmelden</button>
+        <p id="akten-error" class="error"></p>
+        <button class="main-btn secondary-btn" onclick="backToBeamten()">Zurück</button>
     </div>
 
-    <!-- Aktensystem Panel -->
     <div class="container hidden" id="akten-panel">
         <h1>Aktensystem</h1>
         <input type="text" id="akten-name" placeholder="Aktenname / Betreff">
         <textarea id="akten-content" placeholder="Inhalt der Akte" rows="6"></textarea>
-        <button onclick="addAkten()">Akten hinzufügen</button>
+        <button class="main-btn" onclick="addAkten()">Akten hinzufügen</button>
         <div id="akten-list"></div>
-        <div id="logs-list"><h2>Logs</h2></div>
-        <button onclick="logoutAkten()">Zurück</button>
+        <div id="logs-list"><h2 style="margin: 2rem 0 1rem;">Logs</h2></div>
+        <button class="main-btn secondary-btn" onclick="logoutAkten()">Zurück</button>
     </div>
 
-    <!-- Karriere -->
     <div class="container hidden" id="karriere">
         <h1>Karriere</h1>
-        <button id="bewerbung-btn" onclick="showBewerbung()">Bewerbung</button>
-        <button onclick="showBewerbungsstatus()">Bewerbungsstatus</button>
-        <button onclick="showInformationen()">Informationen</button>
-        <button onclick="backToMain()">Zurück</button>
+        <button id="bewerbung-btn" class="main-btn" onclick="showBewerbung()">Bewerbung</button>
+        <button class="main-btn" onclick="showBewerbungsstatus()">Bewerbungsstatus</button>
+        <button class="main-btn" onclick="showInformationen()">Informationen</button>
+        <button class="main-btn secondary-btn" onclick="backToMain()">Zurück</button>
     </div>
 
-    <!-- Bewerbungsformular -->
     <div class="container hidden" id="bewerbung">
         <h1>Bewerbung für Polizei Niederrhein</h1>
         <form id="bewerbung-form">
@@ -164,35 +264,33 @@
             <input type="text" id="rp" placeholder="RP-Erfahrung: [Kurze Info...]" required>
             <textarea id="anschreiben" placeholder="Anschreiben: [Sehr geehrte Polizei...]" required rows="5"></textarea>
             <textarea id="lebenslauf" placeholder="Lebenslauf: [Dein Lebenslauf]" required rows="6"></textarea>
-            <button type="button" onclick="submitBewerbung()">Abschicken</button>
+            <button type="button" class="main-btn" onclick="submitBewerbung()">Abschicken</button>
         </form>
         <p id="bewerbung-code"></p>
-        <button onclick="backToKarriere()">Zurück</button>
+        <button class="main-btn secondary-btn" onclick="backToKarriere()">Zurück</button>
     </div>
 
-    <!-- Status -->
     <div class="container hidden" id="bewerbungsstatus">
         <h1>Bewerbungsstatus</h1>
-        <p id="applications-open-status" style="font-size: 1.5em;"></p>
-        <button onclick="backToKarriere()">Zurück</button>
+        <p id="applications-open-status" style="font-size: 1.7rem; margin: 2rem 0;"></p>
+        <button class="main-btn secondary-btn" onclick="backToKarriere()">Zurück</button>
     </div>
 
-    <!-- Informationen / Code prüfen -->
     <div class="container hidden" id="informationen">
         <h1>Informationen</h1>
         <input type="text" id="info-code" placeholder="Deinen Bewerbungscode eingeben">
-        <button onclick="checkStatus()">Status prüfen</button>
+        <button class="main-btn" onclick="checkStatus()">Status prüfen</button>
         <p id="status-result"></p>
-        <button onclick="backToKarriere()">Zurück</button>
+        <button class="main-btn secondary-btn" onclick="backToKarriere()">Zurück</button>
     </div>
 
     <script>
-        // === KONFIGURATION – Hier die Codes ändern, wenn gewünscht ===
+        // === KONFIGURATION ===
         const BEAMTEN_PW     = '1224';
-        const OPEN_CLOSE_PW  = '1225';   // bleibt ungültig / kann später geändert werden
+        const OPEN_CLOSE_PW  = '1225';   // bleibt absichtlich ungültig
         const AKTEN_PW       = '333563';
 
-        // Initialisierung localStorage
+        // localStorage Initialisierung
         if (!localStorage.getItem('applications')) localStorage.setItem('applications', JSON.stringify([]));
         if (!localStorage.getItem('applicationsOpen')) localStorage.setItem('applicationsOpen', 'true');
         if (!localStorage.getItem('akten')) localStorage.setItem('akten', JSON.stringify([]));
@@ -203,9 +301,9 @@
             document.getElementById(id).classList.remove('hidden');
         }
 
-        function backToMain() { showSection('main'); }
-        function backToKarriere() { showSection('karriere'); updateBewerbungButton(); }
-        function backToBeamten() { showSection('beamten-panel'); }
+        function backToMain()       { showSection('main'); }
+        function backToKarriere()   { showSection('karriere'); updateBewerbungButton(); }
+        function backToBeamten()    { showSection('beamten-panel'); }
 
         function showBeamtenLogin() { showSection('beamten-login'); }
         function loginBeamten() {
@@ -222,12 +320,9 @@
         function toggleApplications() {
             const code = document.getElementById('open-close-code').value;
             const errorEl = document.getElementById('open-close-error');
-            errorEl.textContent = '';
-            if (code === OPEN_CLOSE_PW) {
-                errorEl.textContent = 'Dieser Code ist derzeit ungültig / nicht freigeschaltet.';
-            } else {
-                errorEl.textContent = 'Ungültiger Code.';
-            }
+            errorEl.textContent = code === OPEN_CLOSE_PW 
+                ? 'Dieser Code ist derzeit nicht freigeschaltet / ungültig.'
+                : 'Ungültiger Code.';
         }
 
         function showAktenLogin() { showSection('akten-login'); }
@@ -245,7 +340,8 @@
         function addAkten() {
             const name = document.getElementById('akten-name').value.trim();
             const content = document.getElementById('akten-content').value.trim();
-            if (!name || !content) return;
+            if (!name || !content) return alert('Bitte beide Felder ausfüllen.');
+            
             const akten = JSON.parse(localStorage.getItem('akten'));
             akten.push({ name, content });
             localStorage.setItem('akten', JSON.stringify(akten));
@@ -266,12 +362,15 @@
 
         function loadAkten() {
             const list = document.getElementById('akten-list');
-            list.innerHTML = '<h2 style="margin-top:30px;">Aktuelle Akten</h2>';
+            list.innerHTML = '<h2 style="margin: 2rem 0 1rem;">Aktuelle Akten</h2>';
             JSON.parse(localStorage.getItem('akten')).forEach((akt, i) => {
                 const div = document.createElement('div');
                 div.className = 'list-item';
-                div.innerHTML = `<strong>${akt.name}</strong><p style="white-space:pre-wrap;">${akt.content}</p>
-                                 <button onclick="deleteAkten(${i})">Löschen</button>`;
+                div.innerHTML = `
+                    <strong style="font-size:1.3rem;">${akt.name}</strong>
+                    <p style="white-space:pre-wrap; margin-top:0.8rem;">${akt.content}</p>
+                    <button class="main-btn" style="font-size:1.1rem; padding:0.8rem 1.6rem; margin-top:1rem;" onclick="deleteAkten(${i})">Löschen</button>
+                `;
                 list.appendChild(div);
             });
         }
@@ -285,9 +384,10 @@
 
         function loadLogs() {
             const list = document.getElementById('logs-list');
-            list.innerHTML = '<h2>Logs</h2>';
+            list.innerHTML = '<h2 style="margin: 2rem 0 1rem;">Logs</h2>';
             JSON.parse(localStorage.getItem('logs')).forEach(log => {
                 const p = document.createElement('p');
+                p.style.margin = '0.5rem 0';
                 p.textContent = `${log.date}: ${log.action}`;
                 list.appendChild(p);
             });
@@ -305,7 +405,7 @@
 
         function submitBewerbung() {
             const data = {
-                id: Math.floor(100000 + Math.random() * 900000), // 6-stelliger Code
+                id: Math.floor(100000 + Math.random() * 900000),
                 name: document.getElementById('name').value,
                 alter: document.getElementById('alter').value,
                 discord: document.getElementById('discord').value,
@@ -315,12 +415,15 @@
                 lebenslauf: document.getElementById('lebenslauf').value,
                 status: 'In Arbeit'
             };
+
+            if (!data.name || !data.alter) return alert('Bitte mindestens Name und Alter ausfüllen.');
+
             const apps = JSON.parse(localStorage.getItem('applications'));
             apps.push(data);
             localStorage.setItem('applications', JSON.stringify(apps));
 
             document.getElementById('bewerbung-code').innerHTML = 
-                `Bewerbung erfolgreich abgeschickt!<br><strong>Dein persönlicher Code: ${data.id}</strong><br>Merke ihn dir gut – du brauchst ihn später!`;
+                `Bewerbung erfolgreich eingereicht!<br><strong>Dein Code: ${data.id}</strong><br>Merke ihn dir – du brauchst ihn für den Status-Check.`;
             document.getElementById('bewerbung-form').reset();
         }
 
@@ -334,20 +437,22 @@
         function showInformationen() { showSection('informationen'); }
 
         function checkStatus() {
-            const code = parseInt(document.getElementById('info-code').value);
-            if (!code) {
-                document.getElementById('status-result').textContent = 'Bitte einen gültigen Code eingeben.';
+            const codeStr = document.getElementById('info-code').value.trim();
+            const code = parseInt(codeStr);
+            if (!code || isNaN(code)) {
+                document.getElementById('status-result').textContent = 'Bitte einen gültigen numerischen Code eingeben.';
                 return;
             }
+
             const app = JSON.parse(localStorage.getItem('applications')).find(a => a.id === code);
             document.getElementById('status-result').textContent = app 
-                ? `Dein Status: ${app.status}`
+                ? `Dein Bewerbungsstatus: ${app.status}`
                 : 'Kein Eintrag zu diesem Code gefunden.';
         }
 
         function loadApplications() {
             const list = document.getElementById('applications-list');
-            list.innerHTML = '<h2>Eingegangene Bewerbungen</h2>';
+            list.innerHTML = '<h2 style="margin-bottom:1.5rem;">Eingegangene Bewerbungen</h2>';
             JSON.parse(localStorage.getItem('applications')).forEach((app, i) => {
                 const div = document.createElement('div');
                 div.className = 'list-item';
@@ -356,12 +461,12 @@
                     <p><strong>Name / Alter:</strong> ${app.name}, ${app.alter}</p>
                     <p><strong>Discord:</strong> ${app.discord}</p>
                     <p><strong>Zeiten:</strong> ${app.onlinezeiten}</p>
-                    <p><strong>RP-Erfahrung:</strong> ${app.rp}</p>
-                    <p><strong>Anschreiben:</strong><br>${app.anschreiben.replace(/\n/g, '<br>')}</p>
-                    <p><strong>Lebenslauf:</strong><br>${app.lebenslauf.replace(/\n/g, '<br>')}</p>
-                    <p><strong>Status:</strong> ${app.status}</p>
-                    <button onclick="changeStatus(${i}, 'Angenommen')">Annehmen</button>
-                    <button onclick="changeStatus(${i}, 'Abgelehnt')">Ablehnen</button>
+                    <p><strong>RP:</strong> ${app.rp}</p>
+                    <p><strong>Anschreiben:</strong><br><span style="white-space:pre-wrap;">${app.anschreiben}</span></p>
+                    <p><strong>Lebenslauf:</strong><br><span style="white-space:pre-wrap;">${app.lebenslauf}</span></p>
+                    <p style="font-weight:bold; margin:1rem 0 0.5rem;">Status: ${app.status}</p>
+                    <button class="main-btn" style="font-size:1.1rem; padding:0.8rem 1.6rem;" onclick="changeStatus(${i}, 'Angenommen')">Annehmen</button>
+                    <button class="main-btn" style="font-size:1.1rem; padding:0.8rem 1.6rem; background:linear-gradient(145deg,#dc3545,#a71d2a);" onclick="changeStatus(${i}, 'Abgelehnt')">Ablehnen</button>
                 `;
                 list.appendChild(div);
             });
@@ -375,11 +480,11 @@
         }
 
         function updateBewerbungButton() {
-            document.getElementById('bewerbung-btn').disabled = 
-                localStorage.getItem('applicationsOpen') !== 'true';
+            const btn = document.getElementById('bewerbung-btn');
+            btn.disabled = localStorage.getItem('applicationsOpen') !== 'true';
         }
 
-        // Start
+        // Initialisierung
         updateBewerbungButton();
     </script>
 </body>
