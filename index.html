@@ -43,23 +43,27 @@
             z-index: 1000;
             display: flex;
             gap: 1.2rem;
+            background: rgba(10, 25, 60, 0.4);
+            backdrop-filter: blur(16px);
+            padding: 0.8rem 1.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.12);
         }
 
         .nav button {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.1);
+            border: none;
             color: white;
-            padding: 0.75rem 1.4rem;
+            padding: 0.8rem 1.6rem;
             border-radius: 999px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .nav button:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
+            background: rgba(77,159,255,0.35);
+            transform: translateY(-2px);
         }
 
         .container {
